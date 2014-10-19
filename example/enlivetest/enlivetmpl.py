@@ -78,7 +78,7 @@ class BaseMediaUrlTemplateMixin(object):
         return transform(node, tag_name, attr_fn)
 
 
-class TodoNavSnippet(BaseMediaUrlTemplateMixin, DjangoSnippet):
+class TodoNavSnippet(DjangoSnippet):
 
     template = "logonav/nav.html"
     selection = "nav.navbar"
@@ -106,14 +106,10 @@ class TodoIndex(BaseMediaUrlTemplateMixin, DjangoTemplate):
         nav_snip = TodoNavSnippet()
         navbar = nav_snip(*args, **kwargs)
 
-        #lets do some operation
-        #insert the navigation here
-        hnode = snip_at(nodes, "div.col-lg-12 > h1",
-                        "div.col-lg-12 > h1", content("Index Todo List"))
-
         at(nodes,
            "body", prepend(navbar),
-           "div.col-lg-12", content(hnode))
+           "div.col-lg-12 > h1", content("Index Todo List"),
+           "div.col-lg-12 > p", None)
 
 
 class TodoAppFooterSnippet(BaseMediaUrlTemplateMixin, DjangoSnippet):
