@@ -1,7 +1,6 @@
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.forms.models import ModelForm
 from django.http.response import HttpResponseRedirect, HttpResponseBadRequest
-from django.shortcuts import render
 
 from django.views.generic.base import TemplateView, View
 from enlivetest.models import TodoItem
@@ -22,9 +21,14 @@ class HomePageView(TemplateView):
         return context
 
 
+### Getting Started View ###
+
 class TodoIndexView(TemplateView):
 
     template_name = "todo_index"
+
+
+### Getting Started View ###
 
 
 

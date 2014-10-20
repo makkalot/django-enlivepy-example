@@ -41,6 +41,8 @@ class ContentTemplate(DjangoTemplate):
         return nodes
 
 
+### Getting Started Tutorial #####
+
 class BaseMediaUrlTemplateMixin(object):
 
     def transform(self, nodes, *args, **kwargs):
@@ -112,6 +114,11 @@ class TodoIndex(BaseMediaUrlTemplateMixin, DjangoTemplate):
            "div.col-lg-12 > p", None)
 
 
+### Getting Started Tutorial #####
+
+
+
+
 class TodoAppFooterSnippet(BaseMediaUrlTemplateMixin, DjangoSnippet):
 
     template = "logonav/footer.html"
@@ -126,6 +133,8 @@ class TodoAppFooterSnippet(BaseMediaUrlTemplateMixin, DjangoSnippet):
         return nodes
 
 
+
+### TodoApp Tutorial ###
 
 def csrf_form_transformer(csrf_token):
     def _transform(node):
@@ -191,7 +200,7 @@ class TodoListTemplate(BaseMediaUrlTemplateMixin, DjangoTemplate):
                                                   self.transform_del_completed_form),
            "footer#footer ul#filters", self.transform_filter_links)
 
-        print "AFTER_ALL : ", emit(select(nodes, "ul#todo-list > li"))
+        #print "AFTER_ALL : ", emit(select(nodes, "ul#todo-list > li"))
 
 
         return nodes
@@ -321,6 +330,7 @@ class TodoListTemplate(BaseMediaUrlTemplateMixin, DjangoTemplate):
         return node
 
 
+### TodoApp Tutorial ###
 
 #register the template
 register("site_tmpl", ContentTemplate())
